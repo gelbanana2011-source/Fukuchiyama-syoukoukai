@@ -3,71 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>福知山市商工会 | 事業者の「明日」をサポートする</title>
-    <meta name="description" content="福知山市商工会は、経営相談、融資、補助金申請など、地域事業者の持続的な発展を支援します。" />
+    <title>福知山市商工会 | FUKUCHIYAMA Society of Commerce and Industry</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Old+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- 変数定義 --- */
         :root {
-            --primary-color: #003F5E; /* 信頼感のあるネイビー（元のコードの意匠を継承しつつ深く） */
-            --accent-color: #C69C6D; /* 福知山城の石垣や歴史を感じさせるゴールド/ベージュ */
-            --text-color: #333333;
-            --bg-light: #f4f7f6;
+            --primary: #0f2540; /* 深い藍色（Deep Navy） */
+            --accent: #bfa46f;  /* 落ち着いたゴールド（Champagne Gold） */
+            --text-main: #333333;
+            --text-sub: #777777;
+            --bg-body: #f9f9f9;
             --white: #ffffff;
-            --max-width: 1200px;
-            --border-radius: 8px;
-            --transition: all 0.3s ease;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
         }
 
         /* --- リセット & 基本設定 --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--bg-light);
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
+        /* 見出しは明朝体でスタイリッシュに */
+        h1, h2, h3, h4 {
+            font-family: 'Zen Old Mincho', serif;
+            font-weight: 600;
         }
 
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        a { text-decoration: none; color: inherit; transition: 0.4s ease; }
+        ul { list-style: none; }
+        img { width: 100%; height: auto; display: block; }
 
         /* --- ヘッダー --- */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .header-inner {
-            max-width: var(--max-width);
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -75,295 +66,271 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        
-        .logo i {
-            font-size: 1.8rem;
+            letter-spacing: 0.1em;
         }
 
-        .nav-menu ul {
-            display: flex;
-            gap: 2rem;
-        }
-
+        .nav-menu ul { display: flex; gap: 2.5rem; }
         .nav-menu a {
+            font-size: 0.9rem;
             font-weight: 500;
-            color: var(--text-color);
             position: relative;
         }
-
-        .nav-menu a:hover {
-            color: var(--primary-color);
-        }
-
         .nav-menu a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: var(--transition);
+            height: 1px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+        .nav-menu a:hover::after { width: 100%; }
+
+        .btn-contact {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+        .btn-contact:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(191, 164, 111, 0.4);
         }
 
-        .nav-menu a:hover::after {
+        /* --- ヒーローセクション (パララックス) --- */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=2042&auto=format&fit=crop') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(15, 37, 64, 0.85), rgba(15, 37, 64, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: var(--white);
             width: 100%;
         }
 
-        /* モバイル用メニューボタン（簡易版） */
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            cursor: pointer;
-        }
-
-        /* --- ヒーローセクション --- */
-        .hero {
-            background: linear-gradient(rgba(0, 63, 94, 0.7), rgba(0, 63, 94, 0.5)), url('https://placehold.co/1920x800/2D6169/FFFFFF?text=Fukuchiyama+Landscape') center/cover no-repeat;
-            height: 60vh;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 1rem;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(198, 156, 109, 0.4);
-        }
-
-        .btn:hover {
-            background-color: #b0895b;
-            transform: translateY(-2px);
-        }
-
-        /* --- コンテンツエリア --- */
-        .container {
-            max-width: var(--max-width);
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
+        .hero-en {
             display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 10px auto 0;
-            border-radius: 2px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
         }
 
-        /* --- 相談窓口カード (Grid Layout) --- */
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.8s;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* スクロールダウン表示 */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .scroll-down::after {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* --- 共通レイアウト --- */
+        .section-padding { padding: 8rem 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .section-en {
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            display: block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        /* --- サービス（グリッドレイアウト） --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .service-card {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            border-top: 5px solid transparent;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border-top-color: var(--accent-color);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: 0.4s;
+            transform-origin: bottom;
         }
+
+        .service-card:hover::before { transform: scaleY(1); }
+        .service-card:hover { transform: translateY(-5px); }
 
         .service-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            background: #f0f4f8;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-link {
-            color: var(--primary-color);
-            font-weight: 700;
+        .service-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .service-card p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 1.5rem; }
+        
+        .arrow-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
+        .arrow-link i { font-size: 0.7rem; transition: 0.3s; }
+        .arrow-link:hover i { transform: translateX(5px); }
 
-        .card-link:hover {
-            gap: 10px;
+        /* --- ニュース（ミニマルリスト） --- */
+        .news-section { background: #f2f5f7; }
+        
+        .news-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
 
-        /* --- お知らせリスト (Flexbox) --- */
-        .news-section {
-            background-color: var(--white);
-            padding: 4rem 0;
-            margin-top: 4rem;
-        }
-
-        .news-list {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .news-item {
-            display: flex;
-            align-items: baseline;
+        .news-row {
+            display: grid;
+            grid-template-columns: 100px 100px 1fr;
+            align-items: center;
             padding: 1.5rem 0;
-            border-bottom: 1px solid #eee;
-            gap: 2rem;
+            border-bottom: 1px solid #eaeaea;
+            transition: 0.3s;
         }
-        
-        .news-item:last-child {
-            border-bottom: none;
-        }
+        .news-row:hover { background-color: #fafafa; padding-left: 10px; }
+        .news-row:last-child { border-bottom: none; }
 
-        .news-date {
-            font-weight: 700;
-            color: #999;
-            min-width: 100px;
+        .news-date { font-family: 'Noto Sans JP'; font-weight: 500; color: #999; font-size: 0.9rem; }
+        .news-cat { 
+            font-size: 0.75rem; 
+            border: 1px solid var(--primary); 
+            color: var(--primary); 
+            text-align: center; 
+            padding: 3px 0; 
+            width: 80px;
+            border-radius: 50px;
         }
-
-        .news-tag {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 4px 10px;
-            font-size: 0.8rem;
-            border-radius: 4px;
-        }
-
-        .news-title {
-            flex-grow: 1;
-        }
-        
-        .news-title:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
+        .news-title { font-weight: 500; color: var(--text-main); }
 
         /* --- フッター --- */
         footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 4rem 0 0;
-            margin-top: 4rem;
+            background: var(--primary);
+            color: rgba(255,255,255,0.8);
+            padding: 6rem 0 2rem;
         }
 
-        .footer-grid {
+        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
-        .footer-info h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-address {
-            opacity: 0.9;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .footer-links h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 10px;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-            padding-left: 5px;
-        }
+        .footer-brand h2 { color: var(--white); margin-bottom: 2rem; font-size: 1.8rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.5rem; }
+        
+        .footer-nav h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-nav ul li { margin-bottom: 1rem; }
+        .footer-nav a:hover { color: var(--accent); padding-left: 5px; }
 
         .copyright {
-            background-color: rgba(0,0,0,0.2);
             text-align: center;
-            padding: 1.5rem;
-            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
         }
 
-        /* --- レスポンシブ対応 (Mobile) --- */
+        /* --- モバイル対応 --- */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none; /* 今回は簡易化のため非表示、JSでトグル推奨 */
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .header-inner {
-                padding: 1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .news-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-menu { display: none; } /* 本番ではJSでハンバーガーメニュー実装推奨 */
+            .news-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .footer-content { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
@@ -372,164 +339,140 @@
     <header>
         <div class="header-inner">
             <a href="#" class="logo">
-                <i class="fa-solid fa-mountain-city"></i>
-                福知山市商工会
+                <span style="font-family:'Zen Old Mincho'; font-weight:700;">福知山市商工会</span>
             </a>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#">商工会について</a></li>
-                    <li><a href="#">経営相談・支援</a></li>
-                    <li><a href="#">セミナー・イベント</a></li>
-                    <li><a href="#">会員企業紹介</a></li>
-                    <li><a href="#" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">入会案内</a></li>
+                    <li><a href="#">支援メニュー</a></li>
+                    <li><a href="#">セミナー情報</a></li>
+                    <li><a href="#">会員企業</a></li>
+                    <li><a href="#" class="btn-contact">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>福知山のビジネスを、<br>もっと強く、もっと先へ。</h1>
-            <p>経営の悩み、資金調達、事業承継。<br>あなたの事業に寄り添うパートナーです。</p>
-            <a href="#consultation" class="btn">無料相談を予約する</a>
+            <span class="hero-en">Fukuchiyama City Society of Commerce and Industry</span>
+            <h1>地域の可能性を、<br>未来へつなぐ。</h1>
+            <p>
+                経営の伴走者として。<br>
+                大江・三和・夜久野から、ビジネスの新しい波を。
+            </p>
         </div>
+        <div class="scroll-down">SCROLL</div>
     </section>
 
     <main>
-        <div class="container" id="consultation">
-            <h2 class="section-title">経営に関する無料相談窓口</h2>
-            <p style="text-align: center; margin-bottom: 3rem;">
-                専門家がご相談内容に応じて適切なアドバイスを行います。<br>
-                秘密は厳守されますので、お気軽にご相談ください。
-            </p>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </div>
-                    <h3>経営安定特別相談</h3>
-                    <p>債権回収・取引先の倒産・雇用トラブル・立ち退きなど、弁護士や専門家が経営上のあらゆる危機対応についてアドバイスします。</p>
-                    <a href="#" class="card-link">詳細を見る <i class="fa-solid fa-arrow-right"></i></a>
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-en">Our Services</span>
+                    <h2>事業者を支える4つの柱</h2>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-user-tie"></i>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>経営・金融サポート</h3>
+                        <p>マルケイ融資等の斡旋や経営計画策定。数字の裏付けで、貴社の成長を確実にサポートします。</p>
+                        <a href="#" class="arrow-link">詳しく見る <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
-                    <h3>エキスパートバンク</h3>
-                    <p>IT活用、店舗レイアウト、技術指導など、各分野の専門家が直接事業所を訪問し、具体的な問題解決に向けて支援します。</p>
-                    <a href="#" class="card-link">専門家を探す <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-file-pen"></i></div>
+                        <h3>補助金申請支援</h3>
+                        <p>持続化補助金や事業再構築など、複雑な申請手続きを専門家が伴走型で支援します。</p>
+                        <a href="#" class="arrow-link">詳しく見る <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
-                    <h3>金融・補助金相談</h3>
-                    <p>マルケイ融資などの無担保無保証人融資の斡旋や、小規模事業者持続化補助金などの申請サポートを行っています。</p>
-                    <a href="#" class="card-link">制度一覧へ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-rocket"></i>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                        <h3>販路開拓・地域振興</h3>
+                        <p>物産展への出展や地域資源を活用した商品開発支援で、福知山の魅力を外へ発信します。</p>
+                        <a href="#" class="arrow-link">詳しく見る <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
-                    <h3>創業・起業支援</h3>
-                    <p>福知山で新しくビジネスを始めたい方を対象に、事業計画書の作成から開業手続きまでトータルでサポートします。</p>
-                    <a href="#" class="card-link">創業支援について <i class="fa-solid fa-arrow-right"></i></a>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-people-roof"></i></div>
+                        <h3>労働保険・共済</h3>
+                        <p>従業員の安心と経営者の退職金など、組織を守るためのセーフティネットを整備します。</p>
+                        <a href="#" class="arrow-link">詳しく見る <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <section class="news-section">
+        <section class="section-padding news-section">
             <div class="container">
-                <h2 class="section-title">新着情報・セミナー</h2>
-                <div class="news-list">
-                    <article class="news-item">
-                        <span class="news-date">2025.12.20</span>
-                        <span class="news-tag">セミナー</span>
-                        <a href="#" class="news-title">【2/20開催】従業員を守る「カスタマーハラスメント対策」実践セミナー</a>
-                    </article>
-                    <article class="news-item">
-                        <span class="news-date">2025.12.15</span>
-                        <span class="news-tag">お知らせ</span>
-                        <a href="#" class="news-title">年末年始の閉館日のお知らせ（12/29〜1/3）</a>
-                    </article>
-                    <article class="news-item">
-                        <span class="news-date">2025.12.01</span>
-                        <span class="news-tag">イベント</span>
-                        <a href="#" class="news-title">「福知山産業フェア」の出展事業者を募集します</a>
-                    </article>
-                    <article class="news-item">
-                        <span class="news-date">2025.11.28</span>
-                        <span class="news-tag">補助金</span>
-                        <a href="#" class="news-title">小規模事業者持続化補助金（第15回）の公募要領が発表されました</a>
-                    </article>
+                <div class="section-header">
+                    <span class="section-en">Latest News</span>
+                    <h2>新着情報・セミナー</h2>
                 </div>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn" style="background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">一覧を見る</a>
+                <div class="news-wrapper">
+                    <a href="#" class="news-row">
+                        <span class="news-date">2025.12.16</span>
+                        <span class="news-cat">セミナー</span>
+                        <span class="news-title">「世界の山ちゃん」代表による新春経営講演会の開催について</span>
+                    </a>
+                    <a href="#" class="news-row">
+                        <span class="news-date">2025.12.16</span>
+                        <span class="news-cat">セミナー</span>
+                        <span class="news-title">行動心理学を活用した「成果を上げるプレゼン」実践講座</span>
+                    </a>
+                    <a href="#" class="news-row">
+                        <span class="news-date">2025.11.05</span>
+                        <span class="news-cat">創業支援</span>
+                        <span class="news-title">福知山で夢を叶える「創業塾」第15期生の募集開始</span>
+                    </a>
+                    <a href="#" class="news-row">
+                        <span class="news-date">2025.10.27</span>
+                        <span class="news-cat">お知らせ</span>
+                        <span class="news-title">【重要】中小企業経営基盤強化推進事業費補助金の公募開始</span>
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="arrow-link" style="font-size: 1rem;">一覧を見る <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-info">
-                <h2>
-                    <i class="fa-solid fa-mountain-city"></i>
-                    福知山市商工会
-                </h2>
-                <div class="footer-address">
-                    <p>〒620-0037</p>
-                    <p>京都府福知山市字中ノ28-3</p>
-                    <p>TEL: 0773-22-2108 / FAX: 0773-23-6530</p>
-                    <p>営業時間: 8:30〜17:15（土日祝休み）</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>福知山市商工会</h2>
+                    <p>
+                        <strong>本所（大江）</strong><br>
+                        〒620-0301 京都府福知山市大江町河守398<br>
+                        TEL: 0773-56-5151 / FAX: 0773-56-1797
+                    </p>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #aaa;">
+                        三和支所：福知山市三和町千束515<br>
+                        夜久野支所：福知山市夜久野町額田1388-1
+                    </p>
                 </div>
-                <div style="margin-top: 1.5rem;">
-                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-facebook fa-xl"></i></a>
-                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-instagram fa-xl"></i></a>
-                    <a href="#"><i class="fa-brands fa-line fa-xl"></i></a>
+                <div class="footer-nav">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">商工会概要</a></li>
+                        <li><a href="#">入会のご案内</a></li>
+                        <li><a href="#">アクセス</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">福知山市役所</a></li>
+                        <li><a href="#">京都府商工会連合会</a></li>
+                        <li><a href="#">中小企業庁</a></li>
+                        <li><a href="#">ミラサポplus</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="footer-links">
-                <h3>経営支援・相談</h3>
-                <ul>
-                    <li><a href="#">経営革新・経営力向上</a></li>
-                    <li><a href="#">金融・税務・経理</a></li>
-                    <li><a href="#">労働保険・共済</a></li>
-                    <li><a href="#">エキスパートバンク</a></li>
-                </ul>
+            <div class="copyright">
+                &copy; Fukuchiyama City Society of Commerce and Industry.
             </div>
-
-            <div class="footer-links">
-                <h3>地域振興・情報</h3>
-                <ul>
-                    <li><a href="#">福知山の観光・イベント</a></li>
-                    <li><a href="#">会員企業検索</a></li>
-                    <li><a href="#">検定試験情報</a></li>
-                    <li><a href="#">広報誌バックナンバー</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>組織情報</h3>
-                <ul>
-                    <li><a href="#">商工会概要</a></li>
-                    <li><a href="#">入会のご案内</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
-                    <li><a href="#">お問い合わせ</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; Fukuchiyama City Society of Commerce and Industry. All Rights Reserved.</p>
         </div>
     </footer>
 
